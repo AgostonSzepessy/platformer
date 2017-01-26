@@ -2,13 +2,17 @@ package agoston.platformer.states;
 
 import com.badlogic.gdx.utils.Disposable;
 
+import agoston.platformer.Platformer;
+
 /**
  * Created by Agoston on 2017-01-23.
  */
 
 public abstract class GameState implements Disposable
 {
-	public GameState()
+
+
+	public GameState(Platformer platformer)
 	{
 
 	}

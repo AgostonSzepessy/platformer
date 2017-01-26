@@ -13,17 +13,12 @@ public class Platformer extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 
-	private InputManager input;
-	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 
-		input = new InputManager();
-		Gdx.input.setInputProcessor(input);
-
-		System.out.println("created game");
+		Gdx.input.setInputProcessor(new InputManager());
 	}
 
 	@Override
