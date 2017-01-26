@@ -10,7 +10,7 @@ public abstract class GameState implements Disposable
 {
 	public GameState()
 	{
-		
+
 	}
 
 	/**
