@@ -7,11 +7,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import agoston.platformer.managers.GameKeys;
+import agoston.platformer.managers.GameStateManager;
 import agoston.platformer.managers.InputManager;
+import agoston.platformer.utils.BoundedCamera;
 
-public class Platformer extends ApplicationAdapter {
-	SpriteBatch batch;
+public class Platformer extends ApplicationAdapter
+{
+	private SpriteBatch batch;
+	private BoundedCamera camera;
+	private GameStateManager gsm;
+
 	Texture img;
+
 
 	@Override
 	public void create () {
@@ -37,5 +44,20 @@ public class Platformer extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		img.dispose();
+	}
+
+	public BoundedCamera getCamera()
+	{
+		return camera;
+	}
+
+	public SpriteBatch getBatch()
+	{
+		return batch;
+	}
+
+	public GameStateManager getGsm()
+	{
+		return gsm;
 	}
 }

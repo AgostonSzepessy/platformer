@@ -1,14 +1,16 @@
 package agoston.platformer.states;
 
+import agoston.platformer.Platformer;
+
 /**
  * Created by Agoston on 2017-01-25.
  */
 
 public class MenuState extends GameState
 {
-	public MenuState()
+	public MenuState(Platformer platformer)
 	{
-
+		super(platformer);
 	}
 
 	@Override

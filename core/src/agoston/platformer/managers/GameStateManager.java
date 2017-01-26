@@ -2,6 +2,8 @@ package agoston.platformer.managers;
 
 import com.badlogic.gdx.utils.Disposable;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 import agoston.platformer.states.GameState;
@@ -16,7 +18,7 @@ public class GameStateManager implements Disposable
 	 * Stack that holds the different game states that the game can have. E.g. Main menu and play
 	 * state.
 	 */
-	private Stack<GameState> states;
+	private Deque<GameState> states;
 
 	/**
 	 * Holds the state to transfer to when pushState() and changeState() are called.
@@ -29,7 +31,7 @@ public class GameStateManager implements Disposable
 
 	public GameStateManager()
 	{
-		states = new Stack<GameState>();
+		states = new ArrayDeque<GameState>();
 	}
 
 	public void pushState(GameState state)

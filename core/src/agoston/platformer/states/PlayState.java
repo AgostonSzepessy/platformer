@@ -1,14 +1,16 @@
 package agoston.platformer.states;
 
+import agoston.platformer.Platformer;
+
 /**
  * Created by Agoston on 2017-01-25.
  */
 
 public class PlayState extends GameState
 {
-
-	public PlayState()
+	public PlayState(Platformer platformer)
 	{
+		super(platformer);
 
 	}
 
