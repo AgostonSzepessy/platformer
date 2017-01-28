@@ -45,9 +45,10 @@ public class GameStateManager implements Disposable
 		poppingState = true;
 	}
 
-	public void changeState()
+	public void changeState(GameState state)
 	{
 		changingState = true;
+		tempState = state;
 	}
 
 	/**
@@ -70,6 +71,7 @@ public class GameStateManager implements Disposable
 		if(changingState)
 		{
 			states.pop();
+			states.push(tempState);
 			changingState = false;
 			tempState = null;
 		}
