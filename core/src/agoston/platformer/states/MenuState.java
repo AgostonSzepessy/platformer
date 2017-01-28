@@ -1,6 +1,5 @@
 package agoston.platformer.states;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -103,10 +102,12 @@ public class MenuState extends GameState
 	@Override
 	public void update(float dt)
 	{
+		// go downwards on the list of options
 		if(GameKeys.isPressed(GameKeys.S) || GameKeys.isPressed(GameKeys.DOWN))
 		{
 			currentOption++;
 		}
+		// go upwards on the list of options
 		else if(GameKeys.isPressed(GameKeys.W) || GameKeys.isPressed(GameKeys.UP))
 		{
 			currentOption--;
@@ -121,6 +122,7 @@ public class MenuState extends GameState
 			currentOption = optionsLayout.size - 1;
 		}
 
+		// change state
 		if(GameKeys.isPressed(GameKeys.SPACE) || GameKeys.isPressed(GameKeys.ENTER))
 		{
 			switch(currentOption)
@@ -143,6 +145,7 @@ public class MenuState extends GameState
 		titleFont.draw(batch, titleLayout, camera.viewportWidth / 2 - titleLayout.width / 2,
 				camera.viewportHeight * 3 / 4);
 
+		// draw the options starting from the middle of the screen, and go downwards
 		for(int i = 0; i < optionsLayout.size; ++i)
 		{
 			optionFont.draw(batch, optionsLayout.get(i),
@@ -160,6 +163,8 @@ public class MenuState extends GameState
 		shapeRenderer.setColor(Color.BLACK);
 		shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
+		// Find where to draw the selector icon. The selector icon's origin is in the bottom left
+		// corner so it's height has to be subtracted from it.
 		for(int i = 0; i < optionsLayout.size; ++i)
 		{
 			if(currentOption == i)

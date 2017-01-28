@@ -12,6 +12,11 @@ import agoston.platformer.states.GameState;
  * Created by Agoston on 2017-01-23.
  */
 
+/**
+ * The <code>GameStateManager</code> manages the various game states that a game has. It functions
+ * like a stack under the hood; game states can be pushed on and the previous states are preserved,
+ * or they can be popped off and discarded.
+ */
 public class GameStateManager implements Disposable
 {
 	/**
@@ -45,6 +50,10 @@ public class GameStateManager implements Disposable
 		poppingState = true;
 	}
 
+	/**
+	 * Pops the current state off and pushes the new state on.
+	 * @param state <code>GameState</code> to change to
+	 */
 	public void changeState(GameState state)
 	{
 		changingState = true;
