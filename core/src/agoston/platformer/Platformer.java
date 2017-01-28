@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import agoston.platformer.managers.GameKeys;
 import agoston.platformer.managers.GameStateManager;
 import agoston.platformer.managers.InputManager;
+import agoston.platformer.states.MenuState;
 import agoston.platformer.utils.BoundedCamera;
 
 public class Platformer extends ApplicationAdapter
@@ -25,6 +26,12 @@ public class Platformer extends ApplicationAdapter
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 
+		camera = new BoundedCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		gsm = new GameStateManager();
+		gsm.pushState(new MenuState(this));
+
+		System.out.println(Gdx.graphics.getWidth());
+
 		Gdx.input.setInputProcessor(new InputManager());
 	}
 
@@ -33,9 +40,12 @@ public class Platformer extends ApplicationAdapter
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		gsm.update(Gdx.graphics.getDeltaTime());
+		gsm.draw(Gdx.graphics.getDeltaTime());
+
+//		batch.begin();
+//		batch.draw(img, 0, 0);
+//		batch.end();
 
 		GameKeys.update();
 	}

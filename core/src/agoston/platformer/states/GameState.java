@@ -1,5 +1,6 @@
 package agoston.platformer.states;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 
@@ -18,12 +19,18 @@ public abstract class GameState implements Disposable
 	protected SpriteBatch batch;
 	protected GameStateManager gsm;
 
+	protected final int screenWidth;
+	protected final int screenHeight;
+
 	public GameState(Platformer platformer)
 	{
 		this.platformer = platformer;
 		camera = platformer.getCamera();
 		batch = platformer.getBatch();
 		gsm  = platformer.getGsm();
+
+		screenWidth = Gdx.graphics.getWidth();
+		screenHeight = Gdx.graphics.getHeight();
 	}
 
 	/**

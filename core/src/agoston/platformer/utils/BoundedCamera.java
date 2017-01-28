@@ -93,4 +93,10 @@ public class BoundedCamera extends OrthographicCamera
 			position.y = topYBound;
 		}
 	}
+
+	public void setPosition(float x, float y)
+	{
+		position.x = x;
+		position.y = y;
+	}
 }
