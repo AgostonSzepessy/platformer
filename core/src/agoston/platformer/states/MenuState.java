@@ -145,13 +145,18 @@ public class MenuState extends GameState
 		titleFont.draw(batch, titleLayout, camera.viewportWidth / 2 - titleLayout.width / 2,
 				camera.viewportHeight * 3 / 4);
 
-		// draw the options starting from the middle of the screen, and go downwards
+		// Draw the options starting from the middle of the screen, and go downwards.
 		for(int i = 0; i < optionsLayout.size; ++i)
 		{
-			optionFont.draw(batch, optionsLayout.get(i),
-					camera.viewportWidth / 2 - optionsLayout.get(i).width / 2,
-					camera.viewportHeight / 2 - (i * (optionsLayout.get(i).height +
-							optionsLayout.get(i).height / 2)));
+			// draw it in the middle of the screen
+			float positionX = camera.viewportWidth / 2 - optionsLayout.get(i).width / 2;
+
+			// draw it from the middle of the screen going downwards with half the height of the
+			// text in between each row
+			float positionY = camera.viewportHeight / 2 - (i * (optionsLayout.get(i).height +
+					optionsLayout.get(i).height / 2));
+
+			optionFont.draw(batch, optionsLayout.get(i), positionX, positionY);
 		}
 
 		batch.end();
@@ -163,17 +168,23 @@ public class MenuState extends GameState
 		shapeRenderer.setColor(Color.BLACK);
 		shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-		// Find where to draw the selector icon. The selector icon's origin is in the bottom left
-		// corner so it's height has to be subtracted from it.
+		// Find where to draw the selector icon.
 		for(int i = 0; i < optionsLayout.size; ++i)
 		{
 			if(currentOption == i)
 			{
-				shapeRenderer.ellipse(camera.viewportWidth / 2 - optionsLayout.get(i).width / 2 -
-						selectorSize - selectorSize / 2,
-						camera.viewportHeight / 2 - (i * (optionsLayout.get(i).height +
-								optionsLayout.get(i).height / 2)) - selectorSize, selectorSize,
-						selectorSize);
+				// draw selector to the left side of the option, with half the size of the selector
+				// in between the selector and the option
+				float positionX = camera.viewportWidth / 2 - optionsLayout.get(i).width / 2 -
+						selectorSize - selectorSize / 2;
+
+				// draw it on the same y position as the option, but since ShapeRenderer draws
+				// shapes using the bottom left corner as the origin, subtract its height to put it
+				// on the same y position as the option
+				float positionY = camera.viewportHeight / 2 - (i * (optionsLayout.get(i).height +
+						optionsLayout.get(i).height / 2)) - selectorSize;
+
+				shapeRenderer.ellipse(positionX, positionY, selectorSize, selectorSize);
 			}
 
 		}
